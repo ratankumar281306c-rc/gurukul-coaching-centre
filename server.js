@@ -128,7 +128,12 @@ seed();
 
 app.use(express.json({limit:"2mb"}));
 app.use(express.urlencoded({extended:true}));
-app.use(express.static(path.join(__dirname,"public")));
+const publicDir = path.join(__dirname, "public");
+app.use(express.static(publicDir));
+
+app.get("/health", (req, res) => {
+  res.status(200).json({ ok: true, service: "gurukul-coaching-centre" });
+});
 
 function tokenFor(u){ return jwt.sign({id:u.id,role:u.role,name:u.name,email:u.email},JWT_SECRET,{expiresIn:"7d"}); }
 function auth(req,res,next){
@@ -287,5 +292,13 @@ app.get("/api/admin/results",admin,(req,res)=>res.json(db.prepare(`SELECT r.*,u.
 
 app.get("/api/admin/login-info",(req,res)=>res.json({username:ADMIN_USER}));
 
-app.get("*",(req,res)=>res.sendFile(path.join(__dirname,"public","index.html")));
+app.get("*", (req, res) => {
+  const indexFile = path.join(publicDir, "index.html");
+  if (!require("fs").existsSync(indexFile)) {
+    return res.status(500).send(
+      "Gurukul deployment error: public/index.html is missing. Upload the complete repository."
+    );
+  }
+  res.sendFile(indexFile);
+});
 app.listen(PORT,()=>console.log(`Gurukul Coaching Centre running on http://localhost:${PORT}`));
