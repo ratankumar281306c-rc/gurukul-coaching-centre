@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Gurukul Coaching Centre</title>
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="/"><img src="/logo.svg"><span>GURUKUL<small>COACHING CENTRE</small></span></a>
+<nav><a href="#courses">Courses</a><a href="#tests">Tests</a><a href="#notices">Notices</a><a href="#contact">Admission</a><button id="loginBtn" class="btn">Login</button></nav></header>
+<section class="hero"><div><span class="pill">JEE • NEET • FOUNDATION</span><h1>Learn today.<br><em>Achieve tomorrow.</em></h1><p>Structured classes, study material, tests and results — in one place.</p><div><a class="btn" href="#courses">Explore Courses</a><a class="btn ghost" href="#contact">Talk to Counsellor</a></div></div><div class="heroCard"><b>Gurukul Learning Hub</b><div class="stat">Live Classes</div><div class="stat">Notes & PDFs</div><div class="stat">Mock Tests</div><div class="stat">Performance</div></div></section>
+<section id="courses" class="section"><div class="sectionHead"><div><span class="eyebrow">PROGRAMS</span><h2>Choose your goal</h2></div></div><div id="courseGrid" class="grid"></div></section>
+<section id="tests" class="section alt"><span class="eyebrow">PRACTICE</span><h2>Test. Analyse. Improve.</h2><p>Students can take assigned MCQ tests and get an instant score.</p><div id="testHint" class="noticeBox">Login and enroll in a course to access tests.</div></section>
+<section id="notices" class="section"><span class="eyebrow">UPDATES</span><h2>Latest notices</h2><div id="noticesList"></div></section>
+<section id="contact" class="section alt"><span class="eyebrow">ADMISSION</span><h2>Request a callback</h2><form id="leadForm" class="form"><input name="name" placeholder="Student name" required><input name="phone" placeholder="Mobile number" required><input name="email" type="email" placeholder="Email"><select name="course"><option>JEE</option><option>NEET</option><option>Foundation</option></select><textarea name="message" placeholder="Message"></textarea><button class="btn">Submit Enquiry</button><span id="leadMsg"></span></form></section>
+<footer>© 2026 Gurukul Coaching Centre · Built for learning</footer>
+<div id="modal" class="modal hidden"><div class="modalBox"><button class="close" onclick="closeModal()">×</button><div id="modalBody"></div></div></div>
+<script src="/app.js"></script>
+</body></html>
